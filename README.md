@@ -4,7 +4,7 @@ a starter pack for ATS-20 Users
 this pack is intended to be a friendly way to update the firmware to new ATS-20 radio users
 this pack offers:
 
--Arduino IDE v1.8.16 with required libraries included (pu2clr/SI4735, Tiny4kOLED, TinyOLED-Fonts)
+-Arduino IDE v1.8.16 with required libraries included (pu2clr/SI4735, Tiny4kOLED, TinyOLED-Fonts) [although arduino ide brings required libraries, it is advisable to check the latest version of these in the libraries manager]
 -Arduino sketch with dependencies, using PU2CLR and VE3XLT examples
 -CH341 Driver required by chinese arduino nano clones
 
