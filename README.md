@@ -11,7 +11,7 @@ this pack offers:
 the Sketch offers:
 
 -visual changes made by VE3XLT
--battery charge mod by VE3XLT
+-battery charge mod by VE3XLT (OPTIONAL)
 -band names on screen by VE3XLT
 -band table adjustments, filling frecuency gaps and improve the step and bandwith values by CA2PEY
 -add the AVC function by PU2CLR 
