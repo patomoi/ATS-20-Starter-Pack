@@ -1,3 +1,22 @@
+  
+  Battery Mod Instructions:
+
+Nedded:
+
+-2 10KOhm resistors
+-Soldering Iron
+-Solder
+
+
+the idea is to make a Voltaje divider between positive lead of battery,
+A2 pin of arduino and arduino GND.
+
+
+Positive lead----10K resistor----A2----10K resistor----GND
+|            |                 |                          |
+   battery                              Arduino
+  
+  
   This sketch will download a SSB patch to your SI4735 device (.h files). It will take about 8KB or 15KB of the Arduino memory.
     
   In this context, a patch is a piece of software used to change the behavior of the SI4735 device.
