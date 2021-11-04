@@ -1,0 +1,16 @@
+Battery Mod Instructions:
+
+Nedded:
+
+-2 10KOhm resistors
+-Soldering Iron
+-Solder
+
+
+the idea is to make a Voltaje divider between positive lead of battery,
+A2 pin of arduino and arduino GND.
+
+
+Positive lead----10K resistor----A2----10K resistor----GND
+|            |                 |                          |
+   battery                              Arduino
