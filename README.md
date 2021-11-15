@@ -16,6 +16,8 @@ the Sketch offers:
 -band table adjustments, filling frecuency gaps and improve the step and bandwith values by CA2PEY
 -add the AVC function by PU2CLR 
 
+RESET EEPROM (TURN ON + ENCODER PRESSED) WHEN UPLOAD NEW FIRMWARE
+
 all other functions in this sketch are the work of PU2CLR 
 
 files merged and uploaded by CA2PEY
