@@ -8,7 +8,7 @@ this pack offers:
 -Arduino sketch with dependencies, using PU2CLR and VE3XLT examples
 -CH341 Driver required by chinese arduino nano clones
 
-the Sketch offers:
+the Sketch (v3.0.7g) offers:
 
 -visual changes made by VE3XLT
 -battery charge mod by VE3XLT (OPTIONAL)
