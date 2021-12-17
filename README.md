@@ -1,6 +1,8 @@
 # ATS-20-Starter-Pack
 a starter pack for ATS-20 Users
 
+THIS IS A W.I.P., EXPECT VISUAL BUG IN BANDNAMES AND MEMORY WHILE UPLOADING ISSUES.
+
 this pack is intended to be a friendly way to update the firmware to new ATS-20 radio users
 this pack offers:
 
@@ -17,6 +19,17 @@ the Sketch (v3.0.7g) offers:
 -add the AVC function by PU2CLR 
 
 RESET EEPROM (TURN ON + ENCODER PRESSED) WHEN UPLOAD NEW FIRMWARE
+
+INSTRUCTIONS:
+
+- download release
+- extract
+- install CH341 Driver
+- open arduino ide and update libraries
+- open sketch of you interest (the examples included here [with-without bat mod] or the original included in library)
+- verify and upload
+- if a memory issue happens, go to bantable section and comment (//) the bands that you not use ( pick 1 FM band and 1 MW band )
+
 
 all other functions in this sketch are the work of PU2CLR 
 
