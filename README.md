@@ -6,17 +6,17 @@ THIS IS A W.I.P., EXPECT VISUAL BUG IN BANDNAMES AND MEMORY WHILE UPLOADING ISSU
 this pack is intended to be a friendly way to update the firmware to new ATS-20 radio users
 this pack offers:
 
--Arduino IDE v1.8.16 with required libraries included (pu2clr/SI4735, Tiny4kOLED, TinyOLED-Fonts) [although arduino ide brings required libraries, it is advisable to check the latest version of these in the libraries manager]
--Arduino sketch with dependencies, using PU2CLR and VE3XLT examples
--CH341 Driver required by chinese arduino nano clones
+- Arduino IDE v1.8.16 with required libraries included (pu2clr/SI4735, Tiny4kOLED, TinyOLED-Fonts) [although arduino ide brings required libraries, it is advisable to check the   latest version of these in the libraries manager]
+- Arduino sketch with dependencies, using PU2CLR and VE3XLT examples
+- CH341 Driver required by chinese arduino nano clones
 
 the Sketch (v3.0.7g) offers:
 
--visual changes made by VE3XLT
--battery charge mod by VE3XLT (OPTIONAL)
--band names on screen by VE3XLT
--band table adjustments, filling frecuency gaps and improve the step and bandwith values by CA2PEY
--add the AVC function by PU2CLR 
+- visual changes made by VE3XLT
+- battery charge mod by VE3XLT (OPTIONAL)
+- band names on screen by VE3XLT
+- band table adjustments, filling frecuency gaps and improve the step and bandwith values by CA2PEY
+- add the AVC function by PU2CLR 
 
 RESET EEPROM (TURN ON + ENCODER PRESSED) WHEN UPLOAD NEW FIRMWARE
 
