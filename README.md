@@ -41,7 +41,7 @@ PU2CLR repo  https://github.com/pu2clr/SI4735
 
 VE3XLT repo  https://github.com/VE3XLT/si4732
 
-Google drive backup https://drive.google.com/drive/folders/1z3cM2NTOm_sG9EPtd5jr655HqNsBoUih?usp=sharing
+Google drive backup https://drive.google.com/file/d/1ZXLXR9YV-TsGLhJIlrseKLT0z55z3gap/view?usp=sharing
 
 ATS-20 Facebook group https://www.facebook.com/groups/allbandradioreceiverusergroup/
 
