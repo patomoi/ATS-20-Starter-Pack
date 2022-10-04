@@ -1,30 +1,30 @@
 /*
-  
-  This sketch SHOULD work with the Chinese KIT sold on AliExpress, eBay and Amazon 
-  The author of this sketch and Arduino Library does not know the seller of this kit and does not have a commercial relationship with any commercial product that uses the Arduino Library. 
+
+  This sketch SHOULD work with the Chinese KIT sold on AliExpress, eBay and Amazon
+  The author of this sketch and Arduino Library does not know the seller of this kit and does not have a commercial relationship with any commercial product that uses the Arduino Library.
   It is important you understand that there is no guarantee that this sketch will work correctly in your current product.
   SO, DO NOT TRY IT IF YOU DON'T KNOW WHAT ARE YOU DOING. YOU MUST BE ABLE TO GO BACK TO THE PREVIOUS VERSION IF THIS SKETCH DOES NOT WORK FOR YOU.
 
   Please, read the user_manual.txt for more details about this sketch.
-  ATTENTION: Turn your receiver on with the encoder push button pressed at first time to RESET the eeprom content.  
+  ATTENTION: Turn your receiver on with the encoder push button pressed at first time to RESET the eeprom content.
 
-  ARDUINO LIBRARIES: 
+  ARDUINO LIBRARIES:
   1) This sketch uses the Rotary Encoder Class implementation from Ben Buxton (the source code is included together with this sketch). You do not need to install it;
-  2) Tiny4kOLED Library and TinyOLED-Fonts (on your Arduino IDE, look for this library on Tools->Manage Libraries). 
-  3) PU2CLR SI4735 Arduino Library (on your Arduino IDE look for this library on Tools->Manage Libraries). 
+  2) Tiny4kOLED Library and TinyOLED-Fonts (on your Arduino IDE, look for this library on Tools->Manage Libraries).
+  3) PU2CLR SI4735 Arduino Library (on your Arduino IDE look for this library on Tools->Manage Libraries).
 
   ABOUT THE EEPROM:
 
-  ATMEL says the lifetime of an EEPROM memory position is about 100,000 writes.  
-  For this reason, this sketch tries to avoid save unnecessary writes into the eeprom. 
-  So, the condition to store any status of the receiver is changing the frequency,  bandwidth, volume, band or step  and 10 seconds of inactivity. 
-  For example, if you switch the band and turn the receiver off immediately, no new information will be written into the eeprom.  
-  But you wait 10 seconds after changing anything, all new information will be written. 
+  ATMEL says the lifetime of an EEPROM memory position is about 100,000 writes.
+  For this reason, this sketch tries to avoid save unnecessary writes into the eeprom.
+  So, the condition to store any status of the receiver is changing the frequency,  bandwidth, volume, band or step  and 10 seconds of inactivity.
+  For example, if you switch the band and turn the receiver off immediately, no new information will be written into the eeprom.
+  But you wait 10 seconds after changing anything, all new information will be written.
 
-  ABOUT SSB PATCH:  
- 
-  First of all, it is important to say that the SSB patch content is not part of this library. The paches used here were made available by Mr. 
-  Vadim Afonkin on his Dropbox repository. It is important to note that the author of this library does not encourage anyone to use the SSB patches 
+  ABOUT SSB PATCH:
+
+  First of all, it is important to say that the SSB patch content is not part of this library. The paches used here were made available by Mr.
+  Vadim Afonkin on his Dropbox repository. It is important to note that the author of this library does not encourage anyone to use the SSB patches
   content for commercial purposes. In other words, this library only supports SSB patches, the patches themselves are not part of this library.
 
   In this context, a patch is a piece of software used to change the behavior of the SI4735 device.
@@ -46,7 +46,7 @@
   |                           | RESET (pin 15)                |     12        |
   |                           | SDIO (pin 18)                 |     A4        |
   |                           | SCLK (pin 17)                 |     A5        |
-  |                           | SEN (pin 16)                  |    GND        | 
+  |                           | SEN (pin 16)                  |    GND        |
   |     (*2) Buttons          |                               |               |
   |                           | Switch MODE (AM/LSB/AM)       |      4        |
   |                           | Banddwith                     |      5        |
@@ -62,10 +62,10 @@
   |                           | B                             |       3       |
 
   *1 - You can use the SI4732-A10. Check on the SI4732 package the pins: RESET, SDIO, SCLK and SEN.
-  *2 - Please, read the file user_manual.txt for more detail. 
+  *2 - Please, read the file user_manual.txt for more detail.
   *3 - You can remove this buttons from your circuit and sketch if you dont want to use them.
-  *4 - Some encoder devices have pins A and B inverted. So, if the clockwise and counterclockwise directions 
-       are not correct for you, please, invert the settings for pins A and B. 
+  *4 - Some encoder devices have pins A and B inverted. So, if the clockwise and counterclockwise directions
+       are not correct for you, please, invert the settings for pins A and B.
 
   Prototype documentation: https://pu2clr.github.io/SI4735/
   PU2CLR Si47XX API documentation: https://pu2clr.github.io/SI4735/extras/apidoc/html/
@@ -135,9 +135,9 @@ const uint16_t cmd_0x15_size = sizeof cmd_0x15;         // Array of lines where 
 #define MODE_SWITCH 4      // Switch MODE (Am/LSB/USB)
 #define BANDWIDTH_BUTTON 5 // Used to select the banddwith.
 #define VOLUME_BUTTON 6    // Volume Up
-#define AVC_BUTTON 7     // **** Use thi button to implement a new function
+#define AVC_BUTTON 7       // **** Use thi button to implement a new function
 #define BAND_BUTTON 8      // Next band
-#define SOFTMUTE_BUTTON 9     // **** Use thi button to implement a new function
+#define SOFTMUTE_BUTTON 9  // **** Use thi button to implement a new function
 #define AGC_BUTTON 11      // Switch AGC ON/OF
 #define STEP_BUTTON 10     // Used to select the increment or decrement frequency step (see tabStep)
 #define ENCODER_BUTTON 14  // Used to select the enconder control (BFO or VFO) and SEEK function on AM and FM modes
@@ -210,7 +210,7 @@ Bandwitdth bandwitdthSSB[] = {
     {1, "2.2k"}, // 3
     {2, "3.0k"}, // 4  - default
     {3, "4.0k"}  // 5
-};              // 3 = 4kHz
+};               // 3 = 4kHz
 
 int8_t bwIdxAM = 5;
 const int maxFilterAM = 6;
@@ -226,7 +226,7 @@ Bandwitdth bandwitdthAM[] = {
 
 int8_t bwIdxFM = 0;
 Bandwitdth bandwitdthFM[] = {
-    {0, "AUT"}, // Automatic - default
+    {0, "AUT"},  // Automatic - default
     {1, "110k"}, // Force wide (110 kHz) channel filter.
     {2, " 84k"},
     {3, " 60k"},
@@ -260,51 +260,58 @@ typedef struct
   uint16_t currentFreq;    // Default frequency or current frequency
   uint16_t currentStepIdx; // Idex of tabStep:  Defeult frequency step (See tabStep)
   int8_t bandwitdthIdx;    //  Index of the table bandwitdthFM, bandwitdthAM or bandwitdthSSB;
-  String currentName; // Band Name
+  String currentName;      // Band Name
 } Band;
 
 /*
    Band table
    To add a new band, all you have to do is insert a new line in the table below. No extra code will be needed.
    Remove or comment a line if you do not want a given band
-   You have to RESET the eeprom after modiging this table. 
-   Turn your receiver on with the encoder push button pressed at first time to RESET the eeprom content.  
+   You have to RESET the eeprom after modiging this table.
+   Turn your receiver on with the encoder push button pressed at first time to RESET the eeprom content.
 */
 Band band[] = {
-  {FM_BAND_TYPE, 6400, 8400, 7000, 3, 0, "FMJP"},     // FM from 64 to 84MHz; default 70MHz; default step frequency index is 3; default bandwidth index AUTO
-  {FM_BAND_TYPE, 8400, 10800, 10570, 3, 0, "VHF"},   // FM 84-108 MHZ; default 105.7; step 3; bw auto
-  {LW_BAND_TYPE, 100, 520, 300, 1, 4, "LW"},        // LW 
-  {MW_BAND_TYPE, 520, 1720, 810, 3, 4, "MW"},       // AM/MW from 520 to 1720kHz; default 810kHz; default step frequency index is 3 (10kHz); default bandwidth index is 4 (3kHz)
-  {MW_BAND_TYPE, 531, 1700, 783, 2, 4, "MW"},       // MW for Europe, Africa and Asia
-  {SW_BAND_TYPE, 1700, 30000, 10000, 0, 5, "HFALL"}, //all HF use if you need an all freq band
-  {SW_BAND_TYPE, 1700, 2000, 1850, 0, 5, "160M"},     // 160 meters HAM
-  {SW_BAND_TYPE, 2000, 3200, 2250, 1, 4, "120SW"},     // 120 meters BC
-  {SW_BAND_TYPE, 3200, 3500, 3300, 1, 4, "90SW"},     // 90 meters BC
-  {SW_BAND_TYPE, 3500, 4700, 3700, 0, 5, "80M"},     // 80 meters HAM
-  {SW_BAND_TYPE, 4700, 5100, 4800, 1, 4, "60SW"},     // 60 meters  BC
-  {SW_BAND_TYPE, 5100, 5800, 5400, 0, 4, "60M"},     // 60 metres HAM
-  {SW_BAND_TYPE, 5800, 6300, 6000, 1, 4, "49SW"},     // 49 meters BC 
-  {SW_BAND_TYPE, 6300, 7000, 6800, 0, 4,},     //HF airband, VOLMETS
-  {SW_BAND_TYPE, 7000, 7200, 7100, 0, 4, "40M"},     // 40 meters HAM
-  {SW_BAND_TYPE, 7200, 8000, 7400, 1, 4, "41SW"},     // 41 meters BC
-  {SW_BAND_TYPE, 8000, 9300, 8600, 1, 4},
-  {SW_BAND_TYPE, 9300, 10000, 9700, 1, 4, "31SW"},    // 31 meters BC
-  {SW_BAND_TYPE, 10000, 11500, 10100, 0, 4, "30M"},  // 30 meters HAM
-  {SW_BAND_TYPE, 11500, 12500, 11940, 1, 4, "25SW"},  // 25 meters BC
-  {SW_BAND_TYPE, 12500, 13500, 13000, 1, 4},
-  {SW_BAND_TYPE, 13500, 14000, 13750, 1, 4, "22SW"},  // 22 meters BC
-  {SW_BAND_TYPE, 14000, 15000, 14200, 0, 4, "20M"},  // 20 meters HAM
-  {SW_BAND_TYPE, 15000, 16000, 15300, 1, 4, "19SW"},  // 19 meters BC
-  {SW_BAND_TYPE, 16000, 17400, 16500, 1, 4},
-  {SW_BAND_TYPE, 17400, 18000, 17500, 1, 4, "16SW"},  // 16 meters BC
-  {SW_BAND_TYPE, 18000, 18800, 18100, 0, 4, "17M"},  // 17 meters HAM
-  {SW_BAND_TYPE, 18800, 19100, 19000, 1, 4, "15SW"},  // 15 meters BC
-  {SW_BAND_TYPE, 19100, 21450, 21200, 0, 4, "15M"},  // 15 mters HAM
-  {SW_BAND_TYPE, 21450, 22000, 21500, 1, 4, "13SW"},  // 13 mters BC
-  {SW_BAND_TYPE, 22000, 25000, 24940, 0, 4, "12M"},  // 12 meters HAM
-  {SW_BAND_TYPE, 25000, 26970, 25800, 1, 4, "11SW"},  // 11 meters BC
-  {SW_BAND_TYPE, 26965, 27405, 27065, 3, 4, "CB"},  // CB band (11 meters)
-  {SW_BAND_TYPE, 27400, 30000, 28400, 0, 4, "10M"},   // 10 meters HAM
+    {FM_BAND_TYPE, 6400, 8400, 7000, 3, 0, "FMJP"},    // FM from 64 to 84MHz; default 70MHz; default step frequency index is 3; default bandwidth index AUTO
+    {FM_BAND_TYPE, 8400, 10800, 10570, 3, 0, "VHF"},   // FM 84-108 MHZ; default 105.7; step 3; bw auto
+    {LW_BAND_TYPE, 100, 520, 300, 1, 4, "LW"},         // LW
+    {MW_BAND_TYPE, 520, 1720, 810, 3, 4, "MW"},        // AM/MW from 520 to 1720kHz; default 810kHz; default step frequency index is 3 (10kHz); default bandwidth index is 4 (3kHz)
+    {MW_BAND_TYPE, 531, 1700, 783, 2, 4, "MW"},        // MW for Europe, Africa and Asia
+    {SW_BAND_TYPE, 1700, 30000, 10000, 0, 5, "HFALL"}, // all HF use if you need an all freq band
+    {SW_BAND_TYPE, 1700, 2000, 1850, 0, 5, "160M"},    // 160 meters HAM
+    {SW_BAND_TYPE, 2000, 3200, 2250, 1, 4, "120SW"},   // 120 meters BC
+    {SW_BAND_TYPE, 3200, 3500, 3300, 1, 4, "90SW"},    // 90 meters BC
+    {SW_BAND_TYPE, 3500, 4700, 3700, 0, 5, "80M"},     // 80 meters HAM
+    {SW_BAND_TYPE, 4700, 5100, 4800, 1, 4, "60SW"},    // 60 meters  BC
+    {SW_BAND_TYPE, 5100, 5800, 5400, 0, 4, "60M"},     // 60 metres HAM
+    {SW_BAND_TYPE, 5800, 6300, 6000, 1, 4, "49SW"},    // 49 meters BC
+    {
+        SW_BAND_TYPE,
+        6300,
+        7000,
+        6800,
+        0,
+        4,
+    },                                              // HF airband, VOLMETS
+    {SW_BAND_TYPE, 7000, 7200, 7100, 0, 4, "40M"},  // 40 meters HAM
+    {SW_BAND_TYPE, 7200, 8000, 7400, 1, 4, "41SW"}, // 41 meters BC
+    {SW_BAND_TYPE, 8000, 9300, 8600, 1, 4},
+    {SW_BAND_TYPE, 9300, 10000, 9700, 1, 4, "31SW"},   // 31 meters BC
+    {SW_BAND_TYPE, 10000, 11500, 10100, 0, 4, "30M"},  // 30 meters HAM
+    {SW_BAND_TYPE, 11500, 12500, 11940, 1, 4, "25SW"}, // 25 meters BC
+    {SW_BAND_TYPE, 12500, 13500, 13000, 1, 4},
+    {SW_BAND_TYPE, 13500, 14000, 13750, 1, 4, "22SW"}, // 22 meters BC
+    {SW_BAND_TYPE, 14000, 15000, 14200, 0, 4, "20M"},  // 20 meters HAM
+    {SW_BAND_TYPE, 15000, 16000, 15300, 1, 4, "19SW"}, // 19 meters BC
+    {SW_BAND_TYPE, 16000, 17400, 16500, 1, 4},
+    {SW_BAND_TYPE, 17400, 18000, 17500, 1, 4, "16SW"}, // 16 meters BC
+    {SW_BAND_TYPE, 18000, 18800, 18100, 0, 4, "17M"},  // 17 meters HAM
+    {SW_BAND_TYPE, 18800, 19100, 19000, 1, 4, "15SW"}, // 15 meters BC
+    {SW_BAND_TYPE, 19100, 21450, 21200, 0, 4, "15M"},  // 15 mters HAM
+    {SW_BAND_TYPE, 21450, 22000, 21500, 1, 4, "13SW"}, // 13 mters BC
+    {SW_BAND_TYPE, 22000, 25000, 24940, 0, 4, "12M"},  // 12 meters HAM
+    {SW_BAND_TYPE, 25000, 26970, 25800, 1, 4, "11SW"}, // 11 meters BC
+    {SW_BAND_TYPE, 26965, 27405, 27065, 3, 4, "CB"},   // CB band (11 meters)
+    {SW_BAND_TYPE, 27400, 30000, 28400, 0, 4, "10M"},  // 10 meters HAM
 };
 
 const int lastBand = (sizeof band / sizeof(Band)) - 1;
@@ -347,7 +354,7 @@ void setup()
   oled.setCursor(8, 2);
   oled.print("SI473X Arduino Lib");
   oled.setCursor(10, 3);
-  oled.print("V3.0.7g by PU2CLR");  
+  oled.print("V3.0.7g by PU2CLR");
   delay(1000);
   // end Splash
 
@@ -372,7 +379,7 @@ void setup()
   si4735.getDeviceI2CAddress(RESET_PIN); // Looks for the I2C bus address and set it.  Returns 0 if error
 
   si4735.setup(RESET_PIN, MW_BAND_TYPE); //
-  si4735.setAvcAmMaxGain(48); // Sets the maximum gain for automatic volume control on AM/SSB mode (between 12 and 90dB)
+  si4735.setAvcAmMaxGain(48);            // Sets the maximum gain for automatic volume control on AM/SSB mode (between 12 and 90dB)
 
   delay(500);
 
@@ -390,7 +397,6 @@ void setup()
   si4735.setVolume(volume);
   oled.clear();
   showStatus();
-  
 }
 
 // Use Rotary.h and  Rotary.cpp implementation to process encoder via interrupt
@@ -437,7 +443,7 @@ void saveAllReceiverInformation()
 }
 
 /**
- * reads the last receiver status from eeprom. 
+ * reads the last receiver status from eeprom.
  */
 void readAllReceiverInformation()
 {
@@ -547,14 +553,14 @@ void showFrequency()
       convertToChar(currentFrequency, freqDisplay, 5, 2);
   }
 
-  //oled.invertOutput(bfoOn);
+  // oled.invertOutput(bfoOn);
   oled.setFont(FONT8X16ATARI);
   oled.setCursor(0, 0);
   oled.print("      ");
   oled.setCursor(0, 0);
   oled.print(freqDisplay);
   oled.setFont(FONT6X8);
-  //oled.invertOutput(false);
+  // oled.invertOutput(false);
 
   oled.setCursor(50, 1);
   oled.print(unit);
@@ -609,9 +615,9 @@ void showBandDesc()
   oled.setCursor(50, 0);
   oled.print("  ");
   oled.setCursor(50, 0);
-//  oled.invertOutput(cmdBand);
+  //  oled.invertOutput(cmdBand);
   oled.print(bandMode);
-//  oled.invertOutput(false);
+  //  oled.invertOutput(false);
 }
 
 /* *******************************
@@ -624,7 +630,7 @@ void showRSSI()
   oled.print(" . . . .");
   oled.setCursor(74, 1);
   oled.print("|");
-  if ( bars > 7 )
+  if (bars > 7)
   {
     oled.setCursor(80, 1);
     oled.print("======++");
@@ -632,11 +638,10 @@ void showRSSI()
   else
   {
     for (int i = 0; i < bars; i++)
-    
-    oled.print('=');
+
+      oled.print('=');
     oled.print('|');
   }
-  
 
   if (currentMode == FM)
   {
@@ -656,15 +661,15 @@ void showRSSI()
 /* *******************************
    Shows band name
 */
-  void showBandname()
-  {
+void showBandname()
+{
   oled.setCursor(98, 0);
   oled.invertOutput(cmdBand);
   oled.print("     ");
   oled.setCursor(98, 0);
   oled.print(band[bandIdx].currentName);
   oled.invertOutput(false);
-  }
+}
 
 /*
    Shows the volume level on LCD
@@ -680,17 +685,19 @@ void showVolume()
   oled.print(si4735.getCurrentVolume());
 }
 
-void showAvc() {              
-  if ( currentMode != FM ) {  
-    oled.setCursor(95, 3);    
-    oled.print("     ");      
+void showAvc()
+{
+  if (currentMode != FM)
+  {
+    oled.setCursor(95, 3);
+    oled.print("     ");
     oled.setCursor(92, 3);
     oled.invertOutput(cmdAvc);
     oled.print("AVC:");
     oled.invertOutput(false);
     oled.print(avcIdx);
   }
-}                             
+}
 
 void showStep()
 {
@@ -698,7 +705,7 @@ void showStep()
     return;
   oled.setCursor(74, 2);
   oled.print("         ");
-  if (currentMode == FM) 
+  if (currentMode == FM)
     return;
   oled.setCursor(74, 2);
   oled.invertOutput(cmdStep);
@@ -745,29 +752,29 @@ void showAttenuation()
   oled.setCursor(72, 0);
   oled.print("    ");
   oled.setCursor(72, 0);
-  if ( currentMode != FM ) 
+  if (currentMode != FM)
   {
-    if (cmdSoftMute) 
+    if (cmdSoftMute)
     {
       oled.invertOutput(cmdSoftMute);
       oled.print("SM");
       oled.invertOutput(false);
       oled.print(smIdx);
-    } 
-    else  // shows Softmute attenuation
-    { 
+    }
+    else // shows Softmute attenuation
+    {
       oled.invertOutput(cmdAgcAtt);
       if (agcIdx == 0)
       {
         oled.print("AGC");
         oled.invertOutput(false);
       }
-      else 
+      else
       {
         oled.print("At");
         oled.invertOutput(false);
         oled.print(agcNdx);
-      }  
+      }
     }
   }
 }
@@ -784,7 +791,7 @@ void showBFO()
   oled.invertOutput(bfoOn);
   oled.print("BFO:");
   oled.invertOutput(false);
-//  oled.print(" ");
+  //  oled.print(" ");
   oled.print(currentBFO);
   oled.print("Hz ");
 
@@ -805,7 +812,7 @@ long rdsElapsed = millis();
 char oldBuffer[15];
 
 /*
- * Clean the content of the third line (line 2 - remember the first line is 0)    
+ * Clean the content of the third line (line 2 - remember the first line is 0)
  */
 void cleanBfoRdsInfo()
 {
@@ -814,7 +821,7 @@ void cleanBfoRdsInfo()
 }
 
 /*
- * Show the Station Name. 
+ * Show the Station Name.
  */
 void showRDSStation()
 {
@@ -1007,7 +1014,7 @@ void doStep(int8_t v)
 
 /**
  * Changes the volume based on encoder rotation
-*/
+ */
 void doVolume(int8_t v)
 {
   if (v == 1)
@@ -1023,7 +1030,8 @@ void doVolume(int8_t v)
  */
 void doAttenuation(int8_t v)
 {
-  if ( cmdAgcAtt) {
+  if (cmdAgcAtt)
+  {
     agcIdx = (v == 1) ? agcIdx + 1 : agcIdx - 1;
     if (agcIdx < 0)
       agcIdx = 37;
@@ -1040,9 +1048,10 @@ void doAttenuation(int8_t v)
     // Sets AGC on/off and gain
     si4735.setAutomaticGainControl(disableAgc, agcNdx);
   }
-  else { // deal with Softmute attenuation
-    smIdx = (v==1) ? smIdx + 1 : smIdx -1;
-    if (smIdx > 32) 
+  else
+  { // deal with Softmute attenuation
+    smIdx = (v == 1) ? smIdx + 1 : smIdx - 1;
+    if (smIdx > 32)
       smIdx = 0;
     else if (smIdx < 0)
       smIdx = 32;
@@ -1057,7 +1066,8 @@ void doAttenuation(int8_t v)
 */
 void doAvc(int8_t v)
 {
-  if ( currentMode != FM ) {
+  if (currentMode != FM)
+  {
     avcIdx = (v == 1) ? avcIdx + 2 : avcIdx - 2;
     if (avcIdx > 90)
       avcIdx = 12;
@@ -1161,7 +1171,7 @@ void loop()
     else if (cmdBw)
       doBandwidth(encoderCount);
     else if (cmdAvc)
-      doAvc(encoderCount);  
+      doAvc(encoderCount);
     else if (cmdBand)
     {
       if (encoderCount == 1)
@@ -1199,7 +1209,7 @@ void loop()
   }
 
   // Check button commands
-  if ((millis() - elapsedButton) > MIN_ELAPSED_TIME) // Is that necessary? 
+  if ((millis() - elapsedButton) > MIN_ELAPSED_TIME) // Is that necessary?
   {
     // check if some button is pressed
     if (digitalRead(BANDWIDTH_BUTTON) == LOW)
@@ -1216,7 +1226,8 @@ void loop()
     }
     else if (digitalRead(SOFTMUTE_BUTTON) == LOW)
     {
-      if (currentMode != FM) {
+      if (currentMode != FM)
+      {
         cmdSoftMute = !cmdSoftMute;
         disableCommand(&cmdSoftMute, cmdSoftMute, showAttenuation);
       }
@@ -1230,7 +1241,8 @@ void loop()
     }
     else if (digitalRead(AVC_BUTTON) == LOW)
     {
-      if (currentMode != FM) {
+      if (currentMode != FM)
+      {
         cmdAvc = !cmdAvc;
         disableCommand(&cmdAvc, cmdAvc, showAvc);
       }
@@ -1272,7 +1284,8 @@ void loop()
     }
     else if (digitalRead(AGC_BUTTON) == LOW)
     {
-      if ( currentMode != FM) {
+      if (currentMode != FM)
+      {
         cmdAgcAtt = !cmdAgcAtt;
         disableCommand(&cmdAgcAtt, cmdAgcAtt, showAttenuation);
       }

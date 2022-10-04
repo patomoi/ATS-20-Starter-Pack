@@ -3,7 +3,7 @@ INSTRUCTIONS:
 - download release
 - extract
 - install CH341 Driver
-- open arduino ide and update libraries
+- open Arduino ide and update libraries
 - open sketch of you interest (the examples included here [with-without bat mod] or the original included in library)
 - verify and upload
-- if a memory issue happens, go to bantable section and comment (//) the bands that you not use ( pick 1 FM band and 1 MW band )
+- if a memory issue happens, go to bandtable section and comment (//) the bands that you not use ( pick 1 FM band and 1 MW band )
