@@ -39,7 +39,7 @@ INSTRUCTIONS:
 
 all other functions in this sketch are the work of PU2CLR
 
-files merged and uploaded by CA2PEY
+files merged, modified, updated and uploaded by CA2PEY
 
 thanks to PU2CLR and VE3XLT for their work and to all ATS-20 and SI473x enthusiast around the world.
 
