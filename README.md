@@ -22,7 +22,7 @@ the Sketch (v3.0.7g) offers:
 - visual changes made by VE3XLT
 - battery charge mod by VE3XLT (OPTIONAL)
 - band names on screen by VE3XLT
-- band table adjustments, filling frequency gaps and improve the step and bandwidth values by CA2PEY
+- band table adjustments, filling frequency gaps, fix some visual bugs,fix bat percent bug and improve the step and bandwidth values by CA2PEY
 - add the AVC function by PU2CLR
 
 RESET EEPROM (TURN ON + ENCODER PRESSED) WHEN UPLOAD NEW FIRMWARE
@@ -32,8 +32,8 @@ INSTRUCTIONS:
 - download release
 - extract
 - install CH341 Driver
-- open Arduino ide and update libraries
-- open sketch of you interest (the examples included here [with-without bat mod] or the original included in library)
+- open Arduino ide and update libraries (pu2clr/SI4735, Tiny4kOLED, TinyOLED-Fonts)
+- open sketch of you interest (the examples included here [with-without bat mod] or the original included in library -update: this sketch is now in the library exemples-)
 - verify and upload
 - if a memory issue happens, go to bandtable section and comment (//) the bands that you not use ( pick 1 FM band and 1 MW band )
 
